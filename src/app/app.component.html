@@ -1,0 +1,27 @@
+<div class="container mt-5">
+
+  <form class="form-group" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="row ">
+      <div class="form-group col-md-4" formArrayName="fluidType1">
+        <div class="form-group  add-boarder " *ngFor="let ele of fluidType1.controls ; let i = index">
+          <div class="form-group" [formGroupName]="i">
+            <label>Fluid Name</label>
+            <input type="text" class="form-control" formControlName="fluidName">
+            <div class="form-group" formArrayName="fluidType1Array">
+              <div class="form-group  add-boarder2 " *ngFor="let ele of fluidArray(i).controls ; let i = index">
+                <div class="form-group" [formGroupName]="i">
+                  <label> Fluid Array</label>
+                  <input type="text" class="form-control" formControlName="fluidType1ArrayName">
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm" (click)="addFluidArrayData(i)">AddFluid+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-sm btn-primary col-md-2" (click)="addFluidType1()">Add+</button>
+    <button class="btn btn-md btn-info">Submit Data</button>
+  </form>
+
+</div>
